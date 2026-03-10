@@ -1,10 +1,3 @@
-let figura = 1;
-
-function cambiarFigura(num){
-figura = num;
-draw();
-}
-
 function draw(){
 
 const canvas = document.getElementById("canvas");
@@ -13,58 +6,42 @@ if(canvas.getContext){
 
 const ctx = canvas.getContext("2d");
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
 ctx.fillStyle = "black";
 ctx.strokeStyle = "black";
 
 
-// RECTÁNGULO
-if(figura == 1){
-
-ctx.fillRect(50,50,120,120);
-ctx.clearRect(80,80,60,60);
-ctx.strokeRect(90,90,40,40);
-
-}
+// 1 RECTÁNGULO
+ctx.fillRect(40,40,100,100);
+ctx.clearRect(60,60,60,60);
+ctx.strokeRect(65,65,50,50);
 
 
-// TRIÁNGULO
-if(figura == 2){
-
+// 2 TRIÁNGULO
 ctx.beginPath();
-ctx.moveTo(300,80);
-ctx.lineTo(380,200);
-ctx.lineTo(220,200);
+ctx.moveTo(250,40);
+ctx.lineTo(300,140);
+ctx.lineTo(200,140);
 ctx.closePath();
 ctx.fill();
 
-}
 
-
-// LÍNEAS
-if(figura == 3){
-
+// 3 LÍNEAS
 ctx.beginPath();
-ctx.moveTo(100,250);
-ctx.lineTo(200,300);
-ctx.lineTo(100,350);
+ctx.moveTo(400,40);
+ctx.lineTo(500,100);
+ctx.lineTo(400,140);
 ctx.stroke();
 
-}
 
-
-// MUCHOS ARCOS
-if(figura == 4){
-
+// 4 ARCOS (VARIOS)
 for(let i=0;i<4;i++){
 for(let j=0;j<3;j++){
 
 ctx.beginPath();
 
-let x = 200 + j*80;
-let y = 80 + i*80;
-let radius = 30;
+let x = 80 + j*60;
+let y = 220 + i*60;
+let radius = 20;
 let startAngle = 0;
 let endAngle = Math.PI + (Math.PI*j)/2;
 let counterclockwise = i%2==1;
@@ -80,55 +57,42 @@ ctx.stroke();
 }
 }
 
-}
 
-
-// HAPPY FACE
-if(figura == 5){
-
+// 5 HAPPY FACE
 ctx.beginPath();
-ctx.arc(300,200,100,0,Math.PI*2,true);
-ctx.moveTo(370,200);
-ctx.arc(300,200,70,0,Math.PI,false);
+ctx.arc(350,300,60,0,Math.PI*2,true);
+ctx.moveTo(390,300);
+ctx.arc(350,300,40,0,Math.PI,false);
 
-ctx.moveTo(260,160);
-ctx.arc(250,160,10,0,Math.PI*2,true);
+ctx.moveTo(330,280);
+ctx.arc(320,280,5,0,Math.PI*2,true);
 
-ctx.moveTo(360,160);
-ctx.arc(350,160,10,0,Math.PI*2,true);
+ctx.moveTo(380,280);
+ctx.arc(370,280,5,0,Math.PI*2,true);
 
 ctx.stroke();
 
-}
 
-
-// CURVA CUADRÁTICA
-if(figura == 6){
-
+// 6 CURVA CUADRÁTICA
 ctx.beginPath();
-ctx.moveTo(100,300);
-ctx.quadraticCurveTo(300,100,500,300);
+ctx.moveTo(500,250);
+ctx.quadraticCurveTo(600,150,650,250);
 ctx.stroke();
 
-}
 
-
-// CURVA BEZIER
-if(figura == 7){
-
+// 7 CURVA BEZIER
 ctx.beginPath();
-ctx.moveTo(300,120);
+ctx.moveTo(520,350);
 
-ctx.bezierCurveTo(300,90,260,90,260,120);
-ctx.bezierCurveTo(260,160,300,180,300,200);
-ctx.bezierCurveTo(300,180,340,160,340,120);
-ctx.bezierCurveTo(340,90,300,90,300,120);
+ctx.bezierCurveTo(520,320,480,320,480,350);
+ctx.bezierCurveTo(480,380,520,400,520,420);
+ctx.bezierCurveTo(520,400,560,380,560,350);
+ctx.bezierCurveTo(560,320,520,320,520,350);
 
 ctx.fill();
 
 }
 
-}
 }
 
 window.onload = draw;
